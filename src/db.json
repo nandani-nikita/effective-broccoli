@@ -1,0 +1,22 @@
+{
+  "posts": [
+    { "name": "PK", "id": 1, "designation": "S/w", "department": "S/w" },
+    {
+      "name": "vikram",
+      "fName": "Someone",
+      "mName": "Someone",
+      "dob": "2023-06-02",
+      "gender": null,
+      "cAddress": "address c",
+      "pAddress": "P Address",
+      "email": "vikramecoorganic@gmail.com",
+      "password": "12345678",
+      "cPassword": "12345678",
+      "ref": null,
+      "remark": null,
+      "mob": "6476476576",
+      "aMob": "4758693210",
+      "id": 11
+    }
+  ]
+}
