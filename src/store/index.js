@@ -8,7 +8,8 @@ export default new Vuex.Store({
     isLoggedIn: false,
     loggedInUser: null,
     employeeData : [],
-    currentUrl: "http://localhost:8000"
+    // currentUrl: "http://localhost:8000"
+    currentUrl: "https://nik.saveecoorganic.com"
 
   },
   getters: {
