@@ -1,327 +1,84 @@
 <template>
-  <div class="container-fluid">
-    <div class="row flex-nowrap">
-      <div class="col-auto px-sm-2 px-0 bg-dark min-vh-100">
-        <div class="text-center">
-          <span class="navbar-logo">
-            <img src="../assets/logo.png" width="90em" height="auto" />
-          </span>
-        </div>
-        <!-- <button
-          class="navbar-toggler d-lg-none"
-          :style="{ height: showMenu ? 'auto' : '100vh' }"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#menu"
-          aria-controls="menu"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          @click="toggleMenu"
-        >
-          <span class="navbar-toggler-icon">
-            <img src="" width="60em" height="auto" />
-          </span>
-          <br />
-          <span v-if="!showMenu" class="navbar-toggler-text">Show</span>
-          <span v-else class="navbar-toggler-text">Hide</span>
-        </button> -->
-        <button
-          class="navbar-toggler d-lg-none"
-          :style="{
-            maxHeight: showMenu ? 'none' : '100vh',
-            overflow: showMenu ? 'visible' : 'hidden',
-          }"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#menu"
-          aria-controls="menu"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          @click="toggleMenu"
-        >
-          <span class="navbar-toggler-icon">
-            <img src="" width="60em" height="auto" />
-          </span>
-          <br />
-
-          <span v-if="!showMenu" class="navbar-toggler-text"><span class="fa">&#xf06e;</span></span>
-          <span v-else class="navbar-toggler-text"><span class="fa">&#xf070;</span></span >
+  <div class="dashboard">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <router-link to="/" class="navbar-brand">
+          <img src="../assets/logo.png" alt="Logo" class="logo" />
+        </router-link>
+        <button class="navbar-toggler" type="button" @click="toggleMenu">
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <div
-          class="collapse navbar-collapse d-lg-flex flex-column align-items-start align-items-lg-start px-3 nav-item-div"
-          id="menu"
-        >
-          <!-- <span class="fs-5">Menu</span> -->
-          <ul
-            class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start align-items-sm-start"
-          >
-            <li class="">
-              <router-link to="" class="nav-link align-middle px-0">
-                <!-- <i class="fs-4 bi-house"></i> -->
-                <span class="fa">&#xe3af;</span>
-                <span class="ms-1 d-none d-sm-inline">Home</span>
-              </router-link>
+        <div class="collapse navbar-collapse" :class="{ 'show': showMenu }">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <router-link to="/" class="nav-link">Home</router-link>
             </li>
-            <li>
-              <a
-                href="#"
-                class="nav-link px-0 align-middle"
-                data-bs-toggle="collapse"
-                data-bs-target="#submenu1"
-              >
-                <!-- <i class="fs-4 bi-speedometer2"></i> -->
-                <i class="fa">&#xf0c0;</i>
-                <span class="ms-1 d-none d-sm-inline">Employees</span>
-              </a>
-              <ul
-                class="collapse nav flex-column ms-1"
-                id="submenu1"
-                data-bs-parent="#menu"
-              >
-              <li class="w-100 nav-item">
-                  <router-link to="/new" class="nav-link align-right px-0">
-                    <i class="fa">&#xe541;</i>
-                    <span class="ms-1 d-none d-sm-inline">New</span>
-                  </router-link>
-                </li>
-                <li class="w-100 nav-item">
-                  <router-link to="/add" class="nav-link align-right px-0">
-                    <i class="fa">&#xe541;</i>
-                    <span class="ms-1 d-none d-sm-inline">Add</span>
-                  </router-link>
-                </li>
-                <li class="w-100 nav-item">
-                  <router-link to="/list" class="nav-link align-right px-0">
-                    <i class="fa">&#xf03a;</i>
-                    <span class="ms-1 d-none d-sm-inline">List</span>
-                  </router-link>
-                </li>
-                <li class="w-100 nav-item">
-                  <router-link to="/edit" class="nav-link align-right px-0">
-                    <i class="fa">&#xf4ff;</i>
-                    <span class="ms-1 d-none d-sm-inline">Edit</span>
-                  </router-link>
-                </li>
-                <li class="w-100 nav-item">
-                  <router-link to="/view" class="nav-link px-0">
-                    <i class="fa">&#xe595;</i>
-                    <span class="ms-1 d-none d-sm-inline">Details</span>
-                  </router-link>
-                </li>
-                <li class="w-100 nav-item">
-                  <router-link to="/EmployeeSalaryDetails" class="nav-link px-0">
-                    <i class="fa">&#xf0d6;</i>
-                    <span class="ms-1 d-none d-sm-inline">Salary</span>
-                  </router-link>
-                </li>
-              </ul>
+            <!-- <li class="nav-item">
+              <router-link to="/about" class="nav-link">About</router-link>
             </li>
-            <!-- Suppliers -->
-            <li>
-              <a
-                href="#"
-                class="nav-link px-0 align-middle"
-                data-bs-toggle="collapse"
-                data-bs-target="#supplier_sub_menu"
-              >
-                <!-- <i class="fs-4 bi-speedometer2"></i> -->
-                <i class="fa">&#xf1ba;</i>
-                <span class="ms-1 d-none d-sm-inline">Supplier</span>
-              </a>
-              <ul
-                class="collapse nav flex-column ms-1"
-                id="supplier_sub_menu"
-                data-bs-parent="#menu"
-              >
-                <li class="w-100 nav-item">
-                  <router-link to="/addsupplier" class="nav-link align-right px-0">
-                    <i class="fa">&#xe541;</i>
-                    <span class="ms-1 d-none d-sm-inline">Add</span>
-                  </router-link>
-                </li>
-                <li class="w-100 nav-item">
-                  <router-link to="/supplierlist" class="nav-link align-right px-0">
-                    <i class="fa">&#xf03a;</i>
-                    <span class="ms-1 d-none d-sm-inline">List</span>
-                  </router-link>
-                </li>
-                <li class="w-100 nav-item">
-                  <router-link to="/edit" class="nav-link align-right px-0">
-                    <i class="fa">&#xf4ff;</i>
-                    <span class="ms-1 d-none d-sm-inline">Edit</span>
-                  </router-link>
-                </li>
-                <li class="w-100 nav-item">
-                  <router-link to="/view" class="nav-link px-0">
-                    <i class="fa">&#xe595;</i>
-                    <span class="ms-1 d-none d-sm-inline">Details</span>
-                  </router-link>
-                </li>
-              </ul>
+            <li class="nav-item">
+              <router-link to="/services" class="nav-link">Services</router-link>
             </li>
-            <!-- Transaction -->
-            <li>
-              <a
-                href="#"
-                class="nav-link px-0 align-middle"
-                data-bs-toggle="collapse"
-                data-bs-target="#transactions"
-              >
-                <!-- <i class="fs-4 bi-speedometer2"></i> -->
-                <i class="fa">&#xf19c;</i>
-                <span class="ms-1 d-none d-sm-inline">Daily Transactions</span>
+            <li class="nav-item">
+              <router-link to="/contact" class="nav-link">Contact</router-link>
+            </li> -->
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" @click="toggleBankDropdown">
+                Bank Accounts
               </a>
-              <ul
-                class="collapse nav flex-column ms-1"
-                id="transactions"
-                data-bs-parent="#menu"
-              >
-                <li class="w-100 nav-item">
-                  <router-link to="/addTransaction" class="nav-link align-right px-0">
-                    <i class="fa">&#xe541;</i>
-                    <span class="ms-1 d-none d-sm-inline">Add</span>
-                  </router-link>
-                </li>
-                <li class="w-100 nav-item">
-                  <router-link to="/list" class="nav-link align-right px-0">
-                    <i class="fa">&#xf03a;</i>
-                    <span class="ms-1 d-none d-sm-inline">List</span>
-                  </router-link>
-                </li>
-                <li class="w-100 nav-item">
-                  <router-link to="/edit" class="nav-link align-right px-0">
-                    <i class="fa">&#xf4ff;</i>
-                    <span class="ms-1 d-none d-sm-inline">Edit</span>
-                  </router-link>
-                </li>
-                <li class="w-100 nav-item">
-                  <router-link to="/view" class="nav-link px-0">
-                    <i class="fa">&#xe595;</i>
-                    <span class="ms-1 d-none d-sm-inline">Details</span>
-                  </router-link>
-                </li>
-              </ul>
+              <div class="dropdown-menu" :class="{ 'show': showBankDropdown }">
+                <a class="dropdown-item" @click="navigateToAddBank">Add Bank</a>
+                <a class="dropdown-item"  @click="navigateToAllBanks">All Accounts</a>
+              </div>
             </li>
 
-            <li>
-              <a href="#" class="nav-link px-0 align-middle">
-                <i class="fs-4 bi-table"></i>
-                <i class="fa">&#xf218;</i>
-                <span class="ms-1">Orders</span>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" @click="toggleTrxDropdown">
+                 Transactions
               </a>
+              <div class="dropdown-menu" :class="{ 'show': showTrxDropdown }">
+                <a class="dropdown-item" @click="navigateToAddTrx">Add Transaction</a>
+                <a class="dropdown-item"  @click="navigateToAllTrx">All Transactions</a>
+              </div>
             </li>
-            <li>
-              <a
-                href="#"
-                class="nav-link px-0 align-middle"
-                data-bs-toggle="collapse"
-                data-bs-target="#submenu2"
-              >
-                <i class="fs-4 bi-bootstrap"></i>
-                <i class="fa">&#xf032;</i>
-                <span class="ms-1">Bootstrap</span>
-              </a>
-              <ul
-                class="collapse nav flex-column ms-1"
-                id="submenu2"
-                data-bs-parent="#menu"
-              >
-                <li class="w-100">
-                  <a href="#" class="nav-link px-0">
-                    <span class="">Item 111</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="nav-link px-0">
-                    <span class="">Item 2</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="nav-link px-0 align-middle"
-                data-bs-toggle="collapse"
-                data-bs-target="#submenu3"
-              >
-                <i class="fs-4 bi-grid"></i>
-                <span class="ms-1">Products</span>
-              </a>
-              <ul
-                class="collapse nav flex-column ms-1"
-                id="submenu3"
-                data-bs-parent="#menu"
-              >
-                <li class="w-100">
-                  <a href="#" class="nav-link px-0">
-                    <span class="">Product 1</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="nav-link px-0">
-                    <span class="">Product 2</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="nav-link px-0">
-                    <span class="">Product 3</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="nav-link px-0">
-                    <span class="">Product 4</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#" class="nav-link px-0 align-middle">
-                <i class="fs-4 bi-people"></i>
-                <i class="fa">&#xf183;</i>
-                <span class="ms-1">Customers</span>
-              </a>
-            </li>
+
+
+
+
+
           </ul>
-          <hr />
-          <div class="dropdown pb-4">
-            <a
-              href="#"
-              class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-              id="dropdownUser1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <img
-                src="https://github.com/mdo.png"
-                alt="hugenerd"
-                width="30"
-                height="30"
-                class="rounded-circle"
-              />
-              <span class="mx-1">{{ loggedInUser.userName }}</span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-              <li><a class="dropdown-item" href="#">New project...</a></li>
-              <li><a class="dropdown-item" href="#">Settings</a></li>
+          <!-- User Dropdown -->
+          <div class="dropdown">
+            <button class="nav-link dropdown-toggle" type="button" id="navbarDropdown" aria-expanded="false"
+              @click="toggleDropdown">
+              <span id="logged-in-user">{{ loggedInUser.userName }}</span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" :class="{ 'show': showDropdown }">
               <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
               <li>
-                <hr class="dropdown-divider" />
+                <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Sign out</a></li>
+              <li><a class="dropdown-item" href="#">Logout</a></li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="col py-3 component-container">
-        <router-view></router-view>
-      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="container-fluid">
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+
 export default {
   name: "DashBoard",
   computed: {
@@ -330,69 +87,248 @@ export default {
   data() {
     return {
       showMenu: false,
+      showDropdown: false,
+      showBankDropdown: false,
+      showTrxDropdown: false,
     };
   },
-  mounted() {},
   methods: {
     toggleMenu() {
       this.showMenu = !this.showMenu;
     },
+    toggleDropdown() {
+      this.showDropdown = !this.showDropdown;
+    },
+    toggleBankDropdown() {
+      this.showBankDropdown = !this.showBankDropdown;
+    },
+    toggleTrxDropdown() {
+      this.showTrxDropdown = !this.showTrxDropdown;
+    },
+    navigateToAddBank() {
+      if (this.$route.path !== '/add-bank') {
+        this.$router.push({ name: 'AddBank' });
+      }
+      this.toggleBankDropdown();
+    },
+    navigateToAllBanks() {
+      if (this.$route.path !== '/all-bank') {
+        this.$router.push({ name: 'AllBank' });
+      }
+      this.toggleBankDropdown();
+    },
+    navigateToAddTrx() {
+      if (this.$route.path !== '/add-trx') {
+        this.$router.push({ name: 'AddTransaction' });
+      }
+      this.toggleTrxDropdown();
+    },
+    navigateToAllTrx() {
+      if (this.$route.path !== '/all-bank') {
+        this.$router.push({ name: 'AllBank' });
+      }
+      this.toggleTrxDropdown();
+    }
   },
 };
 </script>
-
-<style>
-li a {
-  color: white !important;
-}
-
-.nav-item {
-  margin-left: 15px;
-  text-align: left;
-  
-}
-
-.nav-item span, .nav-item i {
-  color: #00ff00 !important;
-}
-
-.navbar-logo {
-  display: flex;
-  justify-content: center;
-  padding: 1rem 0;
+<!-- 
+<style scoped>
+.dashboard {
+  height: 100vh;
 }
 
 .navbar-toggler {
-  background-color: transparent;
   border: none;
-  cursor: pointer;
-  padding: 0.5rem;
 }
 
-.navbar-toggler-icon {
+.logo {
+  max-width: 100px;
+  height: auto;
+}
+
+.navbar-brand {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.dropdown-menu {
+  min-width: 120px;
+  left: auto;
+  right: 0;
+}
+
+.dropdown-menu.show {
   display: block;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
 }
 
-.navbar-toggler-text {
-  display: inline;
-  /* margin-left: 0.5rem; */
-  color: #04d4fc;
-  vertical-align: top;
-  line-height: 1;
-  position: relative;
-  top: -2em;
-  font-size: 20px;
+
+#logged-in-user {
+  color: #ffffff;
 }
 
-.fs-5 {
-  color: #00ff00;
+
+.navbar {
+  background-color: #343a40;
 }
 
-.nav-item-div {
-  position: relative !important;
-  top: -1em !important;
+.navbar-nav .nav-link,
+.navbar-nav .dropdown-toggle,
+.navbar-nav .dropdown-toggle.nav-link {
+  color: #ffffff;
+}
+
+.dropdown-menu .dropdown-item {
+  color: #343a40; /* Background color for dropdown items */
+}
+
+.dropdown-menu .dropdown-divider {
+  background-color: #343a40; /* Background color for dropdown dividers */
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+  background-color: #6c757d; /* Background color for hover/focus state */
+  color: #ffffff; /* Font color for hover/focus state */
+}
+</style> -->
+
+<!-- 
+<style scoped>
+.dashboard {
+  height: 100vh;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.logo {
+  max-width: 100px;
+  height: auto;
+}
+
+.navbar-brand {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.dropdown-menu {
+  min-width: 120px;
+  left: auto;
+  right: 0;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.navbar {
+  background-color: #6c757d;
+  /* Background color for navbar */
+}
+
+.navbar-nav .nav-link,
+.navbar-nav .dropdown-toggle,
+.navbar-nav .dropdown-toggle.nav-link,
+#logged-in-user {
+  color: #ffffff;
+  /* Font color for navbar links and username */
+}
+
+.dropdown-menu .dropdown-item {
+  color: #6c757d;
+  /* Font color for dropdown items */
+}
+
+.dropdown-menu .dropdown-divider {
+  background-color: #6c757d;
+  /* Background color for dropdown dividers */
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+  background-color: #495057;
+  /* Darker shade for hover/focus state */
+  color: #ffffff;
+  /* Font color for hover/focus state */
+}
+</style> -->
+<style scoped>
+.dashboard {
+  height: 100vh;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.logo {
+  max-width: 100px;
+  height: auto;
+}
+
+.navbar-brand {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.dropdown-menu {
+  min-width: 120px;
+  left: auto;
+  right: 0;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.navbar {
+  background-color: #6c757d;
+  /* Background color for navbar */
+}
+
+.navbar-nav .nav-link,
+.navbar-nav .dropdown-toggle,
+.navbar-nav .dropdown-toggle.nav-link,
+#logged-in-user {
+  color: #ffffff;
+  /* Font color for navbar links and username */
+}
+
+.dropdown-menu .dropdown-item {
+  color: #6c757d;
+  /* Font color for dropdown items */
+}
+
+.dropdown-menu .dropdown-divider {
+  background-color: #6c757d;
+  /* Background color for dropdown dividers */
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+  background-color: #495057;
+  /* Darker shade for hover/focus state */
+  color: #ffffff;
+  /* Font color for hover/focus state */
 }
 </style>

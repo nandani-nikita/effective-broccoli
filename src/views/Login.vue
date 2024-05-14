@@ -22,7 +22,10 @@ export default {
   methods: {
     ...mapActions(['loginUser']),
     async login() {
+      console.log(this.username);
+      console.log(this.password);
       const loginUser = await this.loginUser({ username: this.username, password: this.password });
+      console.log(loginUser)
       if(loginUser) {
         this.$router.push('/dashboard');
       } else {

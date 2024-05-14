@@ -82,12 +82,7 @@ const routes = [
         component: () => import("../components/Supplier/SupplierList.vue"),
         meta: { requiresAuth: true },
       },
-      {
-        path: "/addTransaction",
-        name: "AddTransaction",
-        component: () => import("../components/Daily Transaction/AddTransaction.vue"),
-        meta: { requiresAuth: true },
-      },
+     
       {
         path: "/EmployeeSalaryDetails",
         name: "EmployeeSalaryDetails",
@@ -104,6 +99,25 @@ const routes = [
         path: "/New1",
         name: "New1",
         component: () => import("../components/Employees/New1.vue"),
+        meta: { requiresAuth: true },
+      },
+
+      {
+        path: '/add-bank/:id?',
+        name: 'AddBank',
+        component: () => import("../components/Banks/AddBank.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: '/all-bank',
+        name: 'AllBank',
+        component: () => import("../components/Banks/AllBank.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: '/add-trx/:id?',
+        name: 'AddTransaction',
+        component: () => import("../components/DailyTransaction/AddTransaction.vue"),
         meta: { requiresAuth: true },
       },
     ]
